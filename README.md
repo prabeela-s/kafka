@@ -19,9 +19,13 @@ create a file zookeeper.bat in Desktop, paste below
 ```
 
 
+Double click and run zookeeper.bat 
+
 
 create a file broker-0.bat in Desktop, pate below
 
 ```
 %KAFKA_HOME%\bin\windows\kafka-server-start %KAFKA_HOME%\etc\kafka\server.properties
 ```
+
+Double click and run broker-0.bat
