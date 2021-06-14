@@ -30,6 +30,8 @@ listen for the messages published/latest
 kafka-console-consumer --bootstrap-server localhost:9092 --topic test
 ```
 
+Ctrl + C to exit 
+
 get call the messages from beginging and then for new messages
 
 ```
