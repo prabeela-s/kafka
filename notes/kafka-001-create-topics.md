@@ -37,3 +37,17 @@ get call the messages from beginging and then for new messages
 ```
 kafka-console-consumer --bootstrap-server localhost:9092 --topic test --from-beginning
 ```
+
+
+
+from a specific partition only
+
+```
+kafka-console-consumer --bootstrap-server localhost:9092 --topic test --partition 0 --from-beginning
+```
+
+from a specific partition, from a specific offset onwards only
+
+```
+kafka-console-consumer --bootstrap-server localhost:9092 --topic test --partition 0 --offset 4
+```
