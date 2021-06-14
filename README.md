@@ -10,3 +10,10 @@ if exist %BASE_DIR%\share\java\kafka\* (
 call:concat %BASE_DIR%\share\java\kafka\*
 )
 ```
+
+
+create a file zookeeper.bat in Desktop, paste below
+
+```
+%KAFKA_HOME%\bin\windows\zookeeper-server-start %KAFKA_HOME%\etc\kafka\zookeeper.properties
+```
