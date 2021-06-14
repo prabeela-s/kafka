@@ -6,6 +6,12 @@ kafka-topics --create  --bootstrap-server localhost:9092 --replication-factor 1 
 
 ```
 
+```
+Do it yourself
+Check kafka describe command for messages topics
+check c:/tmp fodler, see how kafka created folder/partitions for messages topic
+```
+
 # consume messages
 
 ```
