@@ -60,29 +60,7 @@ log.dirs=/tmp/kafka-logs-2
 save the file..
 
 
-
-
-### update server-2.properties
-
-1. open the file in notepad++
-
-change the below properties, note: uncomment listeners=PLAINTEXT:
-
-```
-....
-....
-broker.id=2
-....
-....
-listeners=PLAINTEXT://:9095
-...
-...
-log.dirs=/tmp/kafka-logs-2
-```
-
-save the file..
-
-
+ 
 
 
 ### update server-3.properties
@@ -97,7 +75,7 @@ change the below properties, note: uncomment listeners=PLAINTEXT:
 broker.id=3
 ....
 ....
-listeners=PLAINTEXT://:9096
+listeners=PLAINTEXT://:9095
 ...
 ...
 log.dirs=/tmp/kafka-logs-3
