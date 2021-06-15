@@ -60,3 +60,18 @@ shift by ofset negative by n numbers
 ```
 kafka-consumer-groups --bootstrap-server localhost:9092  --group greetings-consumer-group --reset-offsets --shift-by -5   --execute --topic greetings2
 ```
+
+
+
+## Dry Run
+
+this give plans, doesn't reset the offset... safer option, first do with dry run and then apply execute..
+
+
+```
+kafka-consumer-groups --bootstrap-server localhost:9092  --group greetings-consumer-group --reset-offsets --shift-by -5   --dry-run --topic greetings2
+```
+
+```
+kafka-consumer-groups --bootstrap-server localhost:9092  --group greetings-consumer-group --reset-offsets --to-datetime 2021-06-15T07:01:01.999  --dry-run --topic greetings2
+```
