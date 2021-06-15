@@ -16,3 +16,91 @@ server-1.properties
 server-2.properties
 server-3.properties
 ```
+
+
+### update server-1.properties
+
+1. open the file in notepad++
+
+change the below properties, note: uncomment listeners=PLAINTEXT:
+
+```
+....
+....
+broker.id=1
+....
+....
+listeners=PLAINTEXT://:9093
+...
+...
+log.dirs=/tmp/kafka-logs-1
+```
+
+save the file..
+
+
+### update server-2.properties
+
+1. open the file in notepad++
+
+change the below properties, note: uncomment listeners=PLAINTEXT:
+
+```
+....
+....
+broker.id=2
+....
+....
+listeners=PLAINTEXT://:9094
+...
+...
+log.dirs=/tmp/kafka-logs-2
+```
+
+save the file..
+
+
+
+
+### update server-2.properties
+
+1. open the file in notepad++
+
+change the below properties, note: uncomment listeners=PLAINTEXT:
+
+```
+....
+....
+broker.id=2
+....
+....
+listeners=PLAINTEXT://:9095
+...
+...
+log.dirs=/tmp/kafka-logs-2
+```
+
+save the file..
+
+
+
+
+### update server-3.properties
+
+1. open the file in notepad++
+
+change the below properties, note: uncomment listeners=PLAINTEXT:
+
+```
+....
+....
+broker.id=3
+....
+....
+listeners=PLAINTEXT://:9096
+...
+...
+log.dirs=/tmp/kafka-logs-3
+```
+
+save the file..
