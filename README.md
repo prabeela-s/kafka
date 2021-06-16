@@ -79,3 +79,9 @@ if [ "${HOME}" = "/" ]; then
   return
 fi
 ```
+
+```
+sudo apt remove mysql-server
+
+sudo apt autoremove
+```
