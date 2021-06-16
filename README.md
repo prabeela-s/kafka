@@ -81,6 +81,12 @@ fi
 ```
 
 ```
+sudo /etc/init.d/mysql start
+sudo /etc/init.d/mysql stop
+```
+
+
+```
 sudo apt remove mysql-server
 
 sudo apt autoremove
@@ -91,3 +97,4 @@ if any error with ubutnu install pacakage fix
 ```
 sudo apt --fix-broken install
 ```
+
