@@ -1,5 +1,5 @@
 package kafka.workshop.streams;
- 
+
 
 import io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde;
 import kafka.workshop.Settings;
@@ -36,7 +36,7 @@ public class InvoiceStream {
         props.put(StreamsConfig.COMMIT_INTERVAL_MS_CONFIG, 1 * 1000);
         props.put(StreamsConfig.CACHE_MAX_BYTES_BUFFERING_CONFIG, 0);
 
-        props.put("schema.registry.url", Settings.BOOTSTRAP_SERVERS);
+        props.put("schema.registry.url", Settings.SCHEMA_REGISTRY);
 
         // Custom Serializer if we have avro schema InvoiceAvroSerde
         final Serde<Invoice> InvoiceAvroSerde = new SpecificAvroSerde<>();
