@@ -5,3 +5,10 @@ You need linux to use all the below commands, open command prompt and run below 
 ```
 wsl.exe -u root
 ```
+
+
+Now run `ksql client` which is console based client, will connect to ksql server.
+
+```
+ksql
+```
