@@ -85,3 +85,9 @@ sudo apt remove mysql-server
 
 sudo apt autoremove
 ```
+
+if any error with ubutnu install pacakage fix
+
+```
+sudo apt --fix-broken install
+```
