@@ -63,3 +63,18 @@ create a file broker-0.bat in Desktop, pate below
 ```
 
 Double click and run broker-0.bat
+
+
+
+
+----
+
+
+sudo nano /etc/profile.d/wsl-integration.sh
+
+```
+# Check if we have HOME folder
+if [ "${HOME}" = "/" ]; then
+  return
+fi
+```
