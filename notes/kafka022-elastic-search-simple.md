@@ -11,7 +11,7 @@ curl -X POST http://localhost:8083/connectors -H "Content-Type: application/json
    "tasks.max": "1",
    "topics": "simple.elasticsearch.data",
    "type.name": "_doc",
-    "value.converter": "org.apache.kafka.connect.json.JsonConverter"
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
  "value.converter.schemas.enable": "false",
  "schema.ignore": "true",
  "key.ignore": "true"
