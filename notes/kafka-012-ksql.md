@@ -96,16 +96,25 @@ Now generate users records on shell 1, if datagen stop, run again..
 PERSISTED QUERIES [CREATE STREAM AS ] results written to Kafka
 Will be runnign automatically, need to use TERMINATE command to stop them
 
+persisted queries will create topics like users_female, users_male kafka topics, and results shall be published to kafka topics..
+
 ```
 CREATE STREAM users_female AS SELECT userid AS userid, regionid FROM users_stream where gender='FEMALE';
 
 CREATE STREAM users_male AS SELECT userid AS userid, regionid FROM users_stream where gender='MALE';
+```
 
+```
+select * from users_female  EMIT CHANGES;
+select * from users_male  EMIT CHANGES;
+```
 
+Now create pageviews_stream from pageviews data
+
+```
  CREATE STREAM pageviews_stream (userid varchar, pageid varchar) WITH (kafka_topic='pageviews', value_format='JSON');
  
  select * from pageviews_stream  EMIT CHANGES;
-
 ```
 
 
@@ -113,7 +122,7 @@ now generate pageviews usign datagen
 
 
 
-JOIN
+JOIN pages view and users stream
 
 ```
 CREATE STREAM user_pageviews_enriched_stream AS SELECT users_stream.userid AS userid, pageid, regionid, gender FROM pageviews_stream LEFT JOIN users_stream WITHIN 1 HOURS ON pageviews_stream.userid = users_stream.userid;
@@ -122,6 +131,9 @@ select * from user_pageviews_enriched_stream  EMIT CHANGES;
 ```
 
 Ctrl +C to exit
+
+use window, time slicing, group by, aggregation
+
 ```
 CREATE TABLE pageviews_region_table WITH (VALUE_FORMAT='JSON') AS SELECT gender, regionid, COUNT() AS numusers FROM user_pageviews_enriched_stream WINDOW TUMBLING (size 60 second) GROUP BY gender, regionid HAVING COUNT() >= 1;
 
