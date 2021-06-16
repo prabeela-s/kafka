@@ -40,3 +40,7 @@ confluent local load elasticsearch-sink -- -d elasticsearch-sink.json
 
 confluent local status elasticsearch-sink
 ```
+
+```
+curl http://localhost:9200/products/_search | jq
+```
