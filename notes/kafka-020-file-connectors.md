@@ -287,10 +287,25 @@ nano  mysql-product-sink.json
 
  confluent local load mysql-product-sink -- -d  mysql-product-sink.json
 
+Copy paste without new line
+    
+```
+kafka-avro-console-producer --broker-list localhost:9092 --topic products --property value.schema='{"type":"record","name":"product","fields":[{"name":"id","type":"int"},{"name":"name", "type": "string"}, {"name":"price", "type": "int"}]}'  --property schema.registry.url="http://localhost:8081"
+```   
+    
+    Copy paste without new line
+    
+```
+{"id":11,"name":"phone2","price":111}
+{"id":12,"name":"phone2","price":222}
+{"id":13,"name":"phone2","price":333}
+```
 
-kafka-avro-console-producer --broker-list localhost:9092 --topic products --property value.schema='{"type":"record","name":"product","fields":[{"name":"id","type":"int"},{"name":"name", "type": "string"}, {"name":"price", "type": "int"}]}'  --property schema.registry.url="http://k17.training.sh:8081"
+now check the table
    
-
+```
+select * from products
+```
 
 
 
