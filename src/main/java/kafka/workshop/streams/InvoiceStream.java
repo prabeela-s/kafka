@@ -19,6 +19,10 @@ import java.util.Map;
 
 // kafka-console-consumer --bootstrap-server localhost:9092 --topic statewise-invoices-count --from-beginning --property print.key=true --property print.value=true --formatter kafka.tools.DefaultMessageFormatter --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
 
+
+//  kafka-topics --zookeeper localhost:2181 --create --topic statewise-amount --replication-factor 1 --partitions 1
+// kafka-console-consumer --bootstrap-server localhost:9092 --topic statewise-amount  --from-beginning --property print.key=true --property print.value=true --formatter kafka.tools.DefaultMessageFormatter --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
+
 import java.util.Properties;
 
 
