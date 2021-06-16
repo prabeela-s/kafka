@@ -1,5 +1,39 @@
 # ibm-kafka-june-2021
 
+
+# Day 3.5 onwards
+
+```
+wsl.exe -u root
+```
+
+start kafka local cluster using confluent command 
+
+```
+cd /root
+```
+
+```
+confluent local start
+```
+
+if there is failure in above command,
+
+```
+confluent local destroy
+```
+
+then start 
+
+
+```
+confluent local start
+```
+
+
+
+
+
 open C:\confluent-5.5.1\bin\windows\kafka-run-class.bat in notepad++ (right click, edit with notepad++)
 
 paste below line around line 45 
