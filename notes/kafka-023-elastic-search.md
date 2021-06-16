@@ -14,7 +14,7 @@ paste below
  "connector.class": "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
  "tasks.max": "1",
  "topics": "products",
- "name": "simple-elasticsearch-connector",
+ "name": "elasticsearch-sink",
  "connection.url": "http://localhost:9200",
  "type.name": "_doc",
   "key.converter": "org.apache.kafka.connect.storage.StringConverter",
