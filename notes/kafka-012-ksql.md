@@ -41,7 +41,7 @@ Launch Linux Shell 1 to produce users data
 below produce the records, write to topic users
 
 ```
-ksql-datagen quickstart=users format=json topic=users maxInterval=60000 iterations=10000
+ksql-datagen quickstart=users format=json topic=users maxInterval=60000 iterations=5000000
 ```
 
 Launch Linux  Shell 2
@@ -49,7 +49,7 @@ Launch Linux  Shell 2
 below produce the pageview records, write to topic pageviews
 
 ```
-ksql-datagen quickstart=pageviews format=json topic=pageviews maxInterval=60000 iterations=10000
+ksql-datagen quickstart=pageviews format=json topic=pageviews maxInterval=60000 iterations=5000000
 ```
 
 Launch Linux  Shell 3 for kSQL interactive queries
@@ -72,13 +72,27 @@ DESCRIBE users_stream;
 
 NON_PERSISTED QUERIES [Means, the output/result is not stored into KAfka Brokers]
 
+To stop the non persisted query, use Ctrl + C
+
 ```
 select userid, regionid, gender from users_stream EMIT CHANGES;
+```
 
+Now generate users records on shell 1, if datagen stop, run again.. 
+
+```
 select userid, regionid, gender from users_stream where gender='FEMALE'  EMIT CHANGES;
+```
 
+Now generate users records on shell 1, if datagen stop, run again..
+
+```
 select userid, regionid, gender from users_stream where gender='MALE'  EMIT CHANGES;
 ```
+
+Now generate users records on shell 1, if datagen stop, run again..
+
+
 PERSISTED QUERIES [CREATE STREAM AS ] results written to Kafka
 Will be runnign automatically, need to use TERMINATE command to stop them
 
@@ -93,6 +107,12 @@ CREATE STREAM users_male AS SELECT userid AS userid, regionid FROM users_stream 
  select * from pageviews_stream  EMIT CHANGES;
 
 ```
+
+
+now generate pageviews usign datagen
+
+
+
 JOIN
 
 ```
