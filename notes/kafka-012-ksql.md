@@ -104,6 +104,16 @@ CREATE STREAM users_female AS SELECT userid AS userid, regionid FROM users_strea
 CREATE STREAM users_male AS SELECT userid AS userid, regionid FROM users_stream where gender='MALE';
 ```
 
+now check whether new topics created or not
+
+```
+SHOW STREAMS;
+
+SHOW TOPICS;
+```
+
+Listen for from newly created streams..
+
 ```
 select * from users_female  EMIT CHANGES;
 select * from users_male  EMIT CHANGES;
