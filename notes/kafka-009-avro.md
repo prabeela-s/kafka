@@ -44,3 +44,8 @@ Avro schema/NOT EXACT Number
 
 needed 32 bytes using Avro
 
+```
+Refer /lib/README.md file for creating POJO class, downloading jar files...
+```
+
+
