@@ -1,6 +1,17 @@
 # Elastic Search
 
 ```
+sudo service elasticsearch start
+```
+
+check if that working
+
+```
+ curl 'http://localhost:9200/'
+```
+
+
+```
 touch elasticsearch-sink.json
 
 nano elasticsearch-sink.json
