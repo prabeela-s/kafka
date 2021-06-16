@@ -150,11 +150,16 @@ CREATE TABLE pageviews_region_table WITH (VALUE_FORMAT='JSON') AS SELECT gender,
 select * from pageviews_region_table  EMIT CHANGES;
 
 
+```
+
+
 List the persisted queries
+
 ```
 SHOW QUERIES;
 ```
-List of queries with Query ID
+
+explain the query with query id
 
 
 
@@ -166,15 +171,22 @@ EXPLAIN CTAS_PAGEVIEWS_REGION_TABLE_3;
 ```
 
 To stop the query / once stopped, cannot be restarted, need to run fresh query
+`Query ID may vary, use the right one from show queries`
+
 ```
 TERMINATE  CTAS_PAGEVIEWS_REGION_TABLE_3;
 
+```
+
+DROP STREAM and TABLE
+
+```
 DROP STREAM  users_male; 
 
 
 DROP TABLE  pageviews_region;
 ```
-```
+ 
 
 
 # launch Linxu shell 4
