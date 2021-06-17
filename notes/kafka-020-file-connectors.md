@@ -48,6 +48,7 @@ and below content  into nano
 ```
 
 Ctrl + O - to save the content
+
 Ctrl + X - to quit the nano editor
 
 
@@ -68,7 +69,7 @@ confluent local status stock-file-source
 
 ```
 
-start consumer on stocks topic
+start consumer on stocks topic on separate linux shell..
 
 ``` 
 kafka-console-consumer --bootstrap-server localhost:9092 --topic stocks --from-beginning
