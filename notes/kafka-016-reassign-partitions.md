@@ -60,13 +60,56 @@ paste the content and save notepad file..
 
 # generate a plan [not execution/only preview] for reparitions
 
-below commnad generate a file which will have plan to move your data new broker/partitions etc..
+below commnad generate a file which will have plan to move your data new broker/partitions etc..Somehow we want to remove broker 1 from cluster
 
 ```
-kafka-reassign-partitions --zookeeper localhost:2181 --broker-list "1,2,3" --topics-to-move-json-file topics-to-move.json --generate > full-reassignment-file.json
+kafka-reassign-partitions --zookeeper localhost:2181 --broker-list "0,2,3" --topics-to-move-json-file topics-to-move.json --generate > full-reassignment-file.json
 ```
 
 ```
 notepad full-reassignment-file.json
 ```
+
+it will look like, 
+
+```
+Current partition replica assignment
+{"version":1,
+ "partitions":[
+      {"topic":"invoices","partition":1,"replicas":[2],"log_dirs":["any"]},
+      {"topic":"invoices","partition":0,"replicas":[1],"log_dirs":["any"]}
+      ]
+}
+
+Proposed partition reassignment configuration
+{
+ "version":1,
+  "partitions":[
+      {"topic":"invoices","partition":1,"replicas":[2],"log_dirs":["any"]},
+      {"topic":"invoices","partition":0,"replicas":[3],"log_dirs":["any"]}
+   ]
+}
+```
+
+You can optimize/reconfigure the json content as per your requirements...., above file contain present and proposed content.. 
+
+after the config file full-reassignment-file.json changes done, we need to execute the plan...
+
+```
+notepad reassignment.json
+```
+
+and copy only Proposed partition reassignment configuration as json content into reassignment.json, NOT CURRENT PLAN, NOT TEXT PART.., 
+
+changes plan as per  your interest
+
+save the file
+
+
+To execute the plan, 
+
+```
+kafka-reassign-partitions --zookeeper localhost:2181 --reassignment-json-file   reassignment.json --execute
+```
+
 
