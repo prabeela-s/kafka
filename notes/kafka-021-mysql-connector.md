@@ -1,4 +1,13 @@
+# MySQL , JDBC Source and Sink : Event Sourcing
+
+```
+wsl.exe -u root
+
+cd /root
+```
+
 Some issue with WSL with ubuntu CACHE files location, which is needed by mysql
+
 
 ```
 sudo nano /etc/profile.d/wsl-integration.sh
