@@ -232,12 +232,20 @@ confluent local status invoices-file-sink
 
 ## DONE
 
-
+```
 confluent load invoices-file-sink -d invoices-file-sink.properties
 confluent status invoices-file-sink
- 
-cat invoices.txt
+```
 
+```
+Now run the InvoiceProducer.java that pblish to invoices topics
+```
+ 
+ Do this command periodically
+ 
+``` 
+cat invoices.txt
+```
 
 
 
