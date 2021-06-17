@@ -7,6 +7,10 @@
 wsl.exe -u root
 ```
 
+```
+sudo apt install jq
+```
+
 start kafka local cluster using confluent command 
 
 ```
