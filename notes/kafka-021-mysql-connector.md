@@ -70,6 +70,44 @@ cp mysql-connector-java-8.0.25/*.jar confluent-5.5.1/share/java/kafka-connect-jd
 # MYSQL Table/Database Setup
 
 
+## Setup the database 
+
+```
+mysql -uroot
+
+
+CREATE USER 'team'@'localhost' IDENTIFIED BY 'team1234';
+
+CREATE DATABASE ecommerce; 
+
+GRANT ALL PRIVILEGES ON ecommerce.* TO 'team'@'localhost';
+
+exit
+```
+
+
+Exit from the shell
+
+```
+
+mysql -uroot
+
+USE ecommerce;
+
+-- detect insert/update changes using timestamp , but HARD delete
+
+create table products (id int, 
+                       name varchar(255), 
+                       price int, 
+                       create_ts timestamp DEFAULT CURRENT_TIMESTAMP, 
+                       update_ts timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP );
+                       
+             
+exit
+```             
+
+
+
 # MYSQL connectors
 
 
