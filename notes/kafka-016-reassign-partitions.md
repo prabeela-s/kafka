@@ -106,10 +106,25 @@ changes plan as per  your interest
 save the file
 
 
+now describe again one more time, to ensure prior setup.
+
+```
+kafka-topics --describe  --bootstrap-server localhost:9092  --topic invoices
+```
+
+
+##### STOP THE INVOICEPRODUCER
+
 To execute the plan, 
 
 ```
 kafka-reassign-partitions --zookeeper localhost:2181 --reassignment-json-file   reassignment.json --execute
 ```
 
+
+after reassignment.. describe again..
+
+```
+kafka-topics --describe  --bootstrap-server localhost:9092  --topic invoices
+```
 
