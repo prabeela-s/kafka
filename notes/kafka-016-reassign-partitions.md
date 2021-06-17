@@ -22,5 +22,51 @@ We will use InvoiceProducer.java example, ...
 kafka-topics --zookeeper localhost:2181 --create --topic invoices --replication-factor 1 --partitions 1
 ```
 
-run the Invoice Producer after creating topics.
+run the Invoice Producer after creating topics., data get added every 5 seconds...
+
+```
+kafka-topics --describe  --bootstrap-server localhost:9092  --topic invoices
+```
+
+Now alter the topics.. adding more parititions
+
+```
+kafka-topics --zookeeper localhost:2181 --alter --topic invoices   --partitions 2
+```
+
+
+```
+kafka-topics --describe  --bootstrap-server localhost:9092  --topic invoices
+```
+
+
+Now plan for moving topics, by the way partitions may be to new nodes, new broker, older broker to new broker
+
+in command prompt, 
+```
+C:\Users\Administrator> notepad topics-to-move.json
+```
+
+paste the content and save notepad file..
+
+```
+{
+"topics": [
+  {"topic":"invoices"}
+],
+"version":1
+}
+```
+
+# generate a plan [not execution/only preview] for reparitions
+
+below commnad generate a file which will have plan to move your data new broker/partitions etc..
+
+```
+kafka-reassign-partitions --zookeeper localhost:2181 --broker-list "1,2,3" --topics-to-move-json-file topics-to-move.json --generate > full-reassignment-file.json
+```
+
+```
+notepad full-reassignment-file.json
+```
 
