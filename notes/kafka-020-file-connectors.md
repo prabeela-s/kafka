@@ -259,6 +259,10 @@ cat invoices.txt
 
 
 
+### ensure connectors unloaded to save memory if run in constrained environment
 
+```
+confluent local  unload invoices-file-sink
+```
  
  
