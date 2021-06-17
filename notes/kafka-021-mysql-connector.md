@@ -269,3 +269,43 @@ now check the table
 select * from products
 ```
 
+  
+# Insert invoices into table
+  
+  
+```
+touch  mysql-invoice-sink.json
+
+nano  mysql-invoice-sink.json
+```
+
+
+```
+   {
+   "name": "mysql-invoice-sink",
+   "config": {
+     "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+     "topics": "invoices",
+    
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter" : "io.confluent.connect.avro.AvroConverter",
+    "value.converter.schema.registry.url" : "http://localhost:8081",   
+     
+     "connection.url": "jdbc:mysql://localhost:3306/ecommerce?user=team&password=team1234",
+     "auto.create": true
+   }
+ }
+```
+  
+```
+ confluent local load mysql-invoice-sink -- -d  mysql-invoice-sink.json
+```
+  
+  
+ ```
+  confluent local status mysql-invoice-sink
+  ```
+  
+ ```
+  now run the InvoiceProducer in Java 
+  ```
