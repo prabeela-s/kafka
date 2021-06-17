@@ -46,6 +46,9 @@ machine1.temp:20
 machine1.fanspeed:2
 machine1.fanmode:fixed
 machine2.power:on
+machine1.temp:19
+machine1.fanspeed:1
+machine1.fanmode:rotate
 ```
 
 
