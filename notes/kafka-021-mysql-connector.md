@@ -140,6 +140,8 @@ nano  mysql-product-source.json
  }
 ```
  
+the above configuration shall publish the data to kafka topic db_products, where db_ is predix, table is products 
+ 
 ### END PROPERTY JSON CONFIGURATION
 
 
