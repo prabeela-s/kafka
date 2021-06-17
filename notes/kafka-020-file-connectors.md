@@ -1,6 +1,10 @@
 ## File Connectors, Source and Sink
 
 ```
+wsl.exe -u root
+```
+
+```
 cd /root
 
 sudo apt install jq
