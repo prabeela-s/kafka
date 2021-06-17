@@ -3,6 +3,9 @@
 ```
 cd /root
 
+sudo apt install jq
+
+
 confluent local list connectors
 
 confluent local status connectors
