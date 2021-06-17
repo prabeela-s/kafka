@@ -1,0 +1,1 @@
+kafka-mirror-maker --consumer.config "mm-consumer.properties" --producer.config "mm-producer.properties" --whitelist ".*"
