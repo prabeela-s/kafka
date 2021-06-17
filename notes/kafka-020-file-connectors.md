@@ -58,6 +58,13 @@ if it is prompting to write content,  Hit Enter key
 Ctrl + X - to quit the nano editor
 
 
+Use cat command to check content
+
+```
+cat stock-file-source.json
+```
+
+
 ```
 confluent local load stock-file-source -- -d stock-file-source.json
 ```
