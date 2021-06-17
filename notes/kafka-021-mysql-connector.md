@@ -1,3 +1,46 @@
+Some issue with WSL with ubuntu CACHE files location, which is needed by mysql
+
+```
+sudo nano /etc/profile.d/wsl-integration.sh
+```
+
+Add below line on begining of the file..
+
+```
+# Check if we have HOME folder
+if [ "${HOME}" = "/" ]; then
+  return
+fi
+```
+
+Ctrl + O - to save the content
+
+if it is prompting to write content, Hit Enter key
+
+Ctrl + X - to quit the nano editor
+
+To start mysql, use 
+```
+sudo /etc/init.d/mysql start
+```
+
+to stop mysql use, right now DO NOT STOP MYSQL
+
+```
+sudo /etc/init.d/mysql stop
+```
+
+
+to uninstall Mysql,  DO NOT DO THIS NOW
+```
+sudo apt remove mysql-server
+
+sudo apt autoremove
+```
+ 
+# Install MYSQL JDBC
+
+
 ```
 cd /root
 
@@ -14,7 +57,11 @@ cp mysql-connector-java-8.0.25/*.jar confluent-5.5.1/share/java/kafka-connect-jd
 ```
 ================
 
-# MYSQL
+
+# MYSQL Table/Database Setup
+
+
+# MYSQL connectors
 
 
 ### START PROPERTY JSON CONFIGURATION
