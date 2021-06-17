@@ -26,11 +26,13 @@ touch stocks.csv
 
 Load the source connector / run the connector
 
+```
 touch stock-file-source.json
 
 nano stock-file-source.json
+```
 
-and below content 
+and below content  into nano
 
 ```
 
@@ -44,6 +46,9 @@ and below content
      }
  }
 ```
+
+Ctrl + O - to save the content
+Ctrl + X - to quit the nano editor
 
 
 ```
