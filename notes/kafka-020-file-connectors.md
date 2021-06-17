@@ -1,6 +1,8 @@
 ## File Connectors, Source and Sink
 
 ```
+cd /root
+
 confluent local list connectors
 
 confluent local status connectors
