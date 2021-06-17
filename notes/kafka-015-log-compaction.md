@@ -49,5 +49,5 @@ run this, and do Ctrl + C, then run again, then do Ctrl + C, run again.. to chec
  
 
 ```
-kafka-console-consumer --bootstrap-server localhost:9092 --topic settings --from-beginning
+kafka-console-consumer --bootstrap-server localhost:9092 --topic settings --from-beginning --property print.key=true
 ```
