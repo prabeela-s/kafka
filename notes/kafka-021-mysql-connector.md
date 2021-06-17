@@ -244,6 +244,11 @@ nano  mysql-product-sink.json
  confluent local load mysql-product-sink -- -d  mysql-product-sink.json
 ```
   
+  
+ ```
+  confluent local status mysql-product-sink
+  ```
+  
 Copy paste without new line
     
 ```
