@@ -121,6 +121,15 @@ To execute the plan,
 kafka-reassign-partitions --zookeeper localhost:2181 --reassignment-json-file   reassignment.json --execute
 ```
 
+The above command, it will start reassignment, it will ru non background, how to monitor/verify it is working or done or not?
+
+
+to verify
+
+
+```
+kafka-reassign-partitions --zookeeper localhost:2181 --reassignment-json-file   reassignment.json --verify
+```
 
 after reassignment.. describe again..
 
