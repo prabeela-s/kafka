@@ -228,14 +228,24 @@ confluent local load invoices-file-sink -- -d invoices-file-sink.json
 confluent local status invoices-file-sink
 
 ```
+
+
+Ctrl + O - to save the content
+
+if it is prompting to write content,  Hit Enter key
+
+Ctrl + X - to quit the nano editor
+
+
+Use cat command to check content
+
+```
+cat invoices-file-sink.json
+```
  
 
 ## DONE
-
-```
-confluent load invoices-file-sink -d invoices-file-sink.properties
-confluent status invoices-file-sink
-```
+ 
 
 ```
 Now run the InvoiceProducer.java that pblish to invoices topics
