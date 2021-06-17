@@ -309,3 +309,12 @@ nano  mysql-invoice-sink.json
  ```
   now run the InvoiceProducer in Java 
   ```
+  
+  In mysql
+  
+  ```
+  SHOW TABLES;
+  
+  SELECT * FROM INVOICES;
+  
+  ```
