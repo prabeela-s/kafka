@@ -53,7 +53,7 @@ and below content  into nano
 
 Ctrl + O - to save the content
 
-if it is prompting to overwrite content, Type Yes
+if it is prompting to write content,  Hit Enter key
 
 Ctrl + X - to quit the nano editor
 
