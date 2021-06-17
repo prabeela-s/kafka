@@ -11,7 +11,7 @@ Now run zookeeper.bat and broker-0.bat on windows....
 run all the below commands on windows cmd prompt , NOT ON Linux
  
 ```
-    kafka-topics  --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3 --topic settings --config cleanup.policy=compact --config delete.retention.ms=100 --config segment.ms=100 --config min.cleanable.dirty.ratio=0.01   
+    kafka-topics  --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3 --topic settings --config cleanup.policy=compact --config delete.retention.ms=60000 --config segment.ms=60000 --config min.cleanable.dirty.ratio=0.01   
 ```
 
 ```
