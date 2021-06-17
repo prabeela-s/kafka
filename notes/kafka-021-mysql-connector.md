@@ -315,6 +315,6 @@ nano  mysql-invoice-sink.json
   ```
   SHOW TABLES;
   
-  SELECT * FROM INVOICES;
+  SELECT * FROM invoices;
   
   ```
