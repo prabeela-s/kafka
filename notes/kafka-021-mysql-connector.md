@@ -194,12 +194,25 @@ USE ecommerce;
   as you insert, you can see the topics db_products with inserted data, this called Event Sourcing..
   
   
+  
  # MySQL Sink connectors
  
+  
  
 ## MYSQL SINK Connectors
   Consume from Topics, write to database
   kafka-avro-console-producers
+  
+  
+  open new linux shell
+ 
+  ```
+  wsl -u root
+  ```
+  
+ ```
+  cd /root
+ ```
   
   
 ```
