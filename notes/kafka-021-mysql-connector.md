@@ -146,6 +146,14 @@ the above configuration shall publish the data to kafka topic db_products, where
 cat mysql-product-source.json
  ```
  
+ 
+### restart the cluster once due to jdbc drivers copied just now
+
+```
+confluent local stop
+confluent local start
+```
+ 
 ### END PROPERTY JSON CONFIGURATION
 
 
