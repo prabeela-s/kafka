@@ -155,12 +155,33 @@ the above configuration shall publish the data to kafka topic db_products, where
  confluent local status mysql-product-source
  
  ```
+  
+  now open second command prompt and run below command
 
-
+```
 
  kafka-avro-console-consumer --bootstrap-server localhost:9092 --topic db_products --from-beginning --property schema.registry.url="http://localhost:8081"
+ ```
+  
  
+  now insert data into mysql
+  
+  ```
+  
+mysql -uroot
+
+USE ecommerce;
+  
+  insert into products (id, name,price) values(1, 'product1', 100);
+  insert into products (id, name,price) values(2, 'product2', 200);
+  insert into products (id, name,price) values(3, 'product3', 300);
+  insert into products (id, name,price) values(4, 'product4', 400);
+  
+  ```
  
+  as you insert, you can see the topics db_products with inserted data, this called Event Sourcing..
+  
+  
  # MySQL Sink connectors
  
  
