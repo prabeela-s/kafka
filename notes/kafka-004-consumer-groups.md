@@ -4,6 +4,13 @@ to list all consumers
 kafka-consumer-groups --bootstrap-server localhost:9092 --list
 ```
 
+to start consumer with specific group
+
+```
+kafka-console-consumer --bootstrap-server localhost:9092 --topic billings --group invoicegroup    --property print.key=true
+```
+
+
 to describe a specific group 
 
 ```
