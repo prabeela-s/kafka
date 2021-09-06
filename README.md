@@ -1,5 +1,11 @@
 # ibm-kafka-june-2021
 
+# for Kafka Stream rockdb dll issue
+
+Download C++ Redistributabe 2015 and install it
+
+https://www.microsoft.com/en-us/download/details.aspx?id=48145
+
 
 # Day 3.5 onwards
 
