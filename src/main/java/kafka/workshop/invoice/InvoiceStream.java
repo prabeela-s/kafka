@@ -68,52 +68,6 @@ public class InvoiceStream {
             }
         });
 
-        // Aggregation, pre-requisties for the aggregation
-        // Group invoices by stateCode KA, TN, MH...
-        KGroupedStream<String, Invoice> stateGroupStream = invoiceStream.groupBy(
-                (key, invoice) -> invoice.getState().toString() // return a key (state)
-        );
-
-        // KEY, VALUE, table used for aggregation
-        // State name, count
-        // number of invoices produced by state
-        KTable<String, Long> stateGroupCount = stateGroupStream
-                .count(); // numebr of orders by state
-
-        // Set key to title and value to ticket value
-        // total amount spend by people per state
-        // sum(amount)
-        invoiceStream
-                .map((k, invoice) -> new KeyValue<>(invoice.getState().toString(), (long) invoice.getAmount()))
-                // Group by state code
-                .groupByKey(Grouped.with(Serdes.String(), Serdes.Long()))
-                // Apply SUM aggregation by state code
-                .reduce(Long::sum)
-                // Write to stream specified by outputTopic
-                .toStream().to("statewise-invoices-amount", Produced.with(Serdes.String(), Serdes.Long()));
-
-        /// filter, only printing purpose
-        KStream<String, Invoice> invoiceQtyGt3Stream = invoiceStream
-                .filter((key, invoice) ->  invoice.getQty() > 3);
-
-        invoiceQtyGt3Stream.foreach(new ForeachAction<String, Invoice>() {
-            @Override
-            public void apply(String key, Invoice invoice) {
-                System.out.println("Invoice Key " + key + "  value id  " + invoice.getId() + ":" + invoice.getAmount() );
-                System.out.println("received invoice " + invoice);
-            }
-        });
-
-        // KTable can't be stored
-        // Convert KTable to KStream and then write to Kafka topic using .to("topicname")
-
-
-        final Serde<String> stringSerde = Serdes.String();
-        final Serde<Long> longSerde = Serdes.Long();
-        final Serde<Double> doubleSerde = Serdes.Double();
-
-        stateGroupCount.toStream().to("statewise-invoices-count", Produced.with(stringSerde, longSerde));
-
         // collection of streams put together
         final KafkaStreams streams = new KafkaStreams(builder.build(), props);
 
