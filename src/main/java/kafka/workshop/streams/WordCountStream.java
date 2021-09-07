@@ -17,6 +17,10 @@ import java.util.Properties;
 //kafka-topics --zookeeper localhost:2181 --create --topic words --replication-factor 1 --partitions 3
 //kafka-console-producer --broker-list localhost:9092 --topic words
 
+// the final result of word count should be published to kafka topic word-count where key is string, value is Long
+
+//kafka-topics --zookeeper localhost:2181 --create --topic word-count --replication-factor 1 --partitions 3
+// kafka-console-consumer --topic word-count --from-beginning  --bootstrap-server localhost:9092 --property print.key=true --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
 
 
 public class WordCountStream {
@@ -60,7 +64,9 @@ public class WordCountStream {
         KStream<String, Long> wordCountStream  = groupedStream.count(Materialized.as("wordCount"))
                         .toStream();
 
-
+        // Finally publish the output to kafka topic
+        // Key is string, Value is long
+        wordCountStream.to("word-count", Produced.with(Serdes.String(), Serdes.Long()));
 
         splitWordStream.foreach(new ForeachAction<Object, String[]>() {
             @Override
