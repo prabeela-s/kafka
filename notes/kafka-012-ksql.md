@@ -201,6 +201,13 @@ kafka-console-consumer --bootstrap-server localhost:9092 --topic PAGEVIEWS_REGIO
 
 
 # KSQL AVRO
+
+Check result in control center
+
+http://ip:9021
+
+
+
 ```
 
 ksql-datagen quickstart=users format=avro topic=users-avro maxInterval=60000 iterations=5000000
