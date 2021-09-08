@@ -200,3 +200,22 @@ kafka-console-consumer --bootstrap-server localhost:9092 --topic PAGEVIEWS_REGIO
 ```
 
 
+# KSQL AVRO
+```
+
+ksql-datagen quickstart=users format=avro topic=users-avro maxInterval=60000 iterations=5000000
+
+ksql-datagen quickstart=pageviews format=avro topic=pageviews-avro maxInterval=60000 iterations=5000000
+```
+
+```sql
+CREATE STREAM users_stream_avro (userid varchar, regionid varchar, gender varchar) WITH (kafka_topic='users-avro', value_format='AVRO');
+
+ CREATE STREAM pageviews_stream_avro (userid varchar, pageid varchar) WITH (kafka_topic='pageviews-avro', value_format='AVRO');
+
+ CREATE STREAM user_pageviews_enriched_stream_avro WITH (VALUE_FORMAT='AVRO') AS SELECT users_stream_avro.userid AS userid, pageid, regionid, gender FROM pageviews_stream_avro LEFT JOIN users_stream_avro WITHIN 1 HOURS ON pageviews_stream_avro.userid = users_stream_avro.userid;
+
+
+CREATE TABLE pageviews_region_table_avro WITH (VALUE_FORMAT='AVRO') AS SELECT gender, regionid, COUNT() AS numusers FROM user_pageviews_enriched_stream_avro WINDOW TUMBLING (size 60 second) GROUP BY gender, regionid HAVING COUNT() >= 1;
+
+```
