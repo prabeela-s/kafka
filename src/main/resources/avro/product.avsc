@@ -1,0 +1,11 @@
+{"type":"record",
+ "name":"Product",
+ "namespace": "kafka.workshop.models",
+ "fields":[
+ {"name":"id","type":["null","int"],"default":null},
+ {"name":"name","type":["null","string"],"default":null},
+ {"name":"price","type":["null","int"],"default":null},
+ {"name":"create_ts","type":["null",{"type":"long"}],"default":null},
+ {"name":"update_ts","type":["null",{"type":"long"}],"default":null}
+ ],
+ "connect.name":"gk_products"}
