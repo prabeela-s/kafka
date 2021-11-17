@@ -82,3 +82,13 @@ log.dirs=/tmp/kafka-logs-3
 ```
 
 save the file..
+
+
+on the desktop, you can also clone broker-0.bat into 
+
+1. broker-1.bat
+3. broker-2.bat
+4. broker-3.bat
+
+
+Or refer Desktop folder
