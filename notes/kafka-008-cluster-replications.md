@@ -20,6 +20,20 @@ open a command prompt
 ```
 
 
+Or
+
+```
+    kafka-topics  --create --bootstrap-server localhost:9092 --replication-factor 3 --partitions 4 --topic click-stream
+```
+
+```
+    kafka-topics --list --bootstrap-server localhost:9093
+```    
+   
+```    
+    kafka-topics --describe  --bootstrap-server localhost:9095  --topic click-stream
+```
+
 open a command prompt and run producer
 
 ```
