@@ -27,3 +27,9 @@ to know where the data for zookeeper, brokers are stored,
 ```
 confluent local current
 ```
+
+to know whether kafka and other services are  running or not
+
+```
+confluent local status
+```
