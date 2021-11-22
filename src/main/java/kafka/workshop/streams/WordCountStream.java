@@ -3,10 +3,7 @@ package kafka.workshop;
 import io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde;
 import kafka.workshop.models.Invoice;
 import org.apache.kafka.common.serialization.Serdes;
-import org.apache.kafka.streams.KafkaStreams;
-import org.apache.kafka.streams.KeyValue;
-import org.apache.kafka.streams.StreamsBuilder;
-import org.apache.kafka.streams.StreamsConfig;
+import org.apache.kafka.streams.*;
 import org.apache.kafka.streams.kstream.*;
 import org.apache.kafka.streams.state.KeyValueBytesStoreSupplier;
 import org.apache.kafka.streams.state.Stores;
@@ -50,7 +47,7 @@ public class WordCountStream {
         // apply transformation, topology, processor
         // transformation: remove white space , upper to lower case
         final KStream<String, String> filteredStream =  wordStream.map ( (key, value) -> new KeyValue<>(key, value.trim().toLowerCase()))
-                        .filter( (key, value) -> !value.isEmpty());
+                .filter( (key, value) -> !value.isEmpty());
 
         // split line into word array
         final KStream<Object, String[]> splitWordStream = filteredStream.map ( (key, value) -> new KeyValue<>(null, value.split("\\W+")));
@@ -62,7 +59,7 @@ public class WordCountStream {
         KGroupedStream<String, String> groupedStream = indWordStream.groupBy( (key, value) -> value); // group by word, value is java, jvm
 
         KStream<String, Long> wordCountStream  = groupedStream.count(Materialized.as("wordCount"))
-                        .toStream();
+                .toStream();
 
         // Finally publish the output to kafka topic
         // Key is string, Value is long
@@ -99,8 +96,13 @@ public class WordCountStream {
             }
         });
 
+        // ------- builder is a topology builder, until here, no message is subscribed,
+        // kafka stream is not started, no prorcessing until here
 
-        final KafkaStreams streams = new KafkaStreams(builder.build(), props);
+
+        // kafka streams starting, kafka subscribed, processing applied, output writen to kafka
+        Topology topology = builder.build();
+        final KafkaStreams streams = new KafkaStreams(topology, props);
 
 
         streams.start();
@@ -108,4 +110,4 @@ public class WordCountStream {
 
 
     }
-    }
+}
