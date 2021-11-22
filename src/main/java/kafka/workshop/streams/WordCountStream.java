@@ -5,6 +5,7 @@ import kafka.workshop.models.Invoice;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.*;
 import org.apache.kafka.streams.kstream.*;
+ import org.apache.kafka.streams.kstream.KTable;
 import org.apache.kafka.streams.state.KeyValueBytesStoreSupplier;
 import org.apache.kafka.streams.state.Stores;
 
@@ -25,7 +26,7 @@ public class WordCountStream {
     //FIXME: chance schema url
     static String schemaUrl = "http://localhost:8081";
 
-    public static <KTable> void main(String[] args) throws  Exception {
+    public static  void main(String[] args) throws  Exception {
 
 
         final Properties props = new Properties();
@@ -58,7 +59,9 @@ public class WordCountStream {
 
         KGroupedStream<String, String> groupedStream = indWordStream.groupBy( (key, value) -> value); // group by word, value is java, jvm
 
-        KStream<String, Long> wordCountStream  = groupedStream.count(Materialized.as("wordCount"))
+
+        KTable<String, Long> countTable = groupedStream.count(Materialized.as("wordCount"));
+        KStream<String, Long> wordCountStream  = countTable
                 .toStream();
 
         // Finally publish the output to kafka topic
