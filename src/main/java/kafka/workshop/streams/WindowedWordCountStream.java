@@ -1,4 +1,4 @@
-package kafka.workshop;
+package kafka.workshop.streams;
 
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
@@ -52,7 +52,7 @@ public class WindowedWordCountStream {
         // apply transformation, topology, processor
         // transformation: remove white space , upper to lower case
         final KStream<String, String> filteredStream =  wordStream.map ( (key, value) -> new KeyValue<>(key, value.trim().toLowerCase()))
-                        .filter( (key, value) -> !value.isEmpty());
+                .filter( (key, value) -> !value.isEmpty());
 
         // split line into word array
         final KStream<Object, String[]> splitWordStream = filteredStream.map ( (key, value) -> new KeyValue<>(null, value.split("\\W+")));
@@ -62,17 +62,17 @@ public class WindowedWordCountStream {
         final KStream<Object, String> indWordStream = splitWordStream.flatMapValues((values) -> Arrays.asList(values));
 
         KStream<Windowed<String>, Long> windowedWordStream = indWordStream
-                                                    .map( (key, value) -> new KeyValue<>(value, value))
-                                                    .groupByKey()
+                .map( (key, value) -> new KeyValue<>(value, value))
+                .groupByKey()
                 .windowedBy(TimeWindows.of((Duration.ofMinutes(1)) ))
                 .count(Materialized.as("wordCount")).toStream();
 
         // Finally publish the output to kafka topic
         // Key is string, Value is long
         // code below convert Windowed<String> to String for key
-       windowedWordStream
-               .map ( (windowedKey, count) -> new KeyValue<>(windowedKey.key(), count))
-               .to("word-count-1minute", Produced.with(Serdes.String(), Serdes.Long()));
+        windowedWordStream
+                .map ( (windowedKey, count) -> new KeyValue<>(windowedKey.key(), count))
+                .to("word-count-1minute", Produced.with(Serdes.String(), Serdes.Long()));
 
         windowedWordStream.foreach(new ForeachAction<Windowed<String>, Long>() {
             @Override
@@ -96,4 +96,4 @@ public class WindowedWordCountStream {
 
 
     }
-    }
+}
