@@ -1,11 +1,11 @@
 ## File Connectors, Source and Sink
 
 ```
-wsl.exe -u root
+wsl.exe -u bigdata
 ```
 
 ```
-cd /root
+cd /home/bigdata
 
 sudo apt install jq
 
@@ -45,7 +45,7 @@ and below content  into nano
  "config": {
      "connector.class": "FileStreamSource",
      "tasks.max": "1",
-    "file": "/root/stocks.csv",
+    "file": "/home/bigdata/stocks.csv",
     "topic": "stocks"
      }
  }
@@ -142,7 +142,7 @@ paste below content
  "config": {
      "connector.class": "FileStreamSink",
      "tasks.max": "1",
-    "file": "/root/greetings.txt",
+    "file": "/home/bigdata/greetings.txt",
     "topics": "greetings",
 "key.converter": "org.apache.kafka.connect.storage.StringConverter",
 "value.converter": "org.apache.kafka.connect.storage.StringConverter"
@@ -212,7 +212,7 @@ paste below content
  "config": {
      "connector.class": "FileStreamSink",
      "tasks.max": "1",
-    "file": "/root/invoices.txt",
+    "file": "/home/bigdata/invoices.txt",
     "topics": "invoices",
     "key.converter": "org.apache.kafka.connect.storage.StringConverter",
     "value.converter": "io.confluent.connect.avro.AvroConverter",
