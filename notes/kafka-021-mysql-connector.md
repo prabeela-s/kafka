@@ -90,7 +90,7 @@ Exit from the shell
 
 ```
 
-mysql -uroot
+mysql -uteam -pteam1234
 
 USE ecommerce;
 
