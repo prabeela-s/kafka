@@ -28,3 +28,8 @@ get /brokers/ids/0
 ```
 ls /brokers/topics
 ```
+
+
+```
+get  /brokers/topics/test/partitions/0/state
+```
