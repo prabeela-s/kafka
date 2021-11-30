@@ -78,6 +78,17 @@ kafka-consumer-groups --bootstrap-server localhost:9092  --group bookings-group 
 ```
 
 
+specific offset,
+```
+kafka-consumer-groups --bootstrap-server localhost:9092  --group bookings-group --reset-offsets --to-offset 4 --execute --topic bookings:1
+```
+
+
+```
+kafka-consumer-groups --bootstrap-server localhost:9092  --group bookings-group --reset-offsets --to-offset 4 --execute --topic bookings:1,2
+```
+
+
 
 ## Dry Run
 
