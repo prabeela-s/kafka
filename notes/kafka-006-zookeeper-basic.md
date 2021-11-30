@@ -21,7 +21,9 @@ ls /brokers
 ls /brokers/ids
 ```
 
-
+```
+get /brokers/ids/0
+```
 
 ```
 ls /brokers/topics
