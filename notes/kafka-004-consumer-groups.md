@@ -1,7 +1,12 @@
 to list all consumers
 
+````
 kafka-topics --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3 --topic  bookings
+```
 
+```
+kafka-console-producer --broker-list localhost:9092 --topic bookings --property "parse.key=true" --property "key.separator=:"
+```
 
 
 ```
