@@ -53,7 +53,7 @@ public class RebalanceConsumer {
                 System.out.printf("%s topic-partitions are assigned to this consumer\n", Arrays.toString(partitions.toArray()));
 
                 // Not kafka specific, custom if condition
-                String POSITION = "lastCommitted"; // offset | begin | end | lastCommitted
+                String POSITION = "begin"; // offset | begin | end | lastCommitted
 
                 Iterator<TopicPartition> topicPartitionIterator = partitions.iterator();
                 while(topicPartitionIterator.hasNext()) {
