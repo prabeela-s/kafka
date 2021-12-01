@@ -42,15 +42,21 @@ public class OrderPartitioner implements Partitioner {
                          byte[] valueBytes, // serialized json bytes
                          Cluster cluster) {
 
+
+
+
         int partition = 0;
 
         System.out.println("Partition Thread ID " + Thread.currentThread().getId());
 
 
         // cluster is useful to know max partition for topic
+        // FIXME: Cache
         List<PartitionInfo> partitions = cluster.partitionsForTopic(topic);
 
         int numPartitions = partitions.size(); // MAX partition for that topic
+
+       // return random.nextInt( numPartitions); // for random parititons
 
         System.out.println("Total partitions " + partitions.size() + " for topic");
 
@@ -69,7 +75,23 @@ public class OrderPartitioner implements Partitioner {
             partition = 2;
         }
 
+        // OR
 
+        // use value to decide partitions
+
+        Order order = (Order) value;
+
+        if (order.amount > 0 && order.amount <= 1000) {
+            partition =  0; // partition 0
+        }
+
+        if (order.amount > 1000 && order.amount <= 10000) {
+            partition =  1; // partition 1
+        }
+
+        if (order.amount > 10000) {
+            partition =  2; // partition 2
+        }
 
         // OR
 
