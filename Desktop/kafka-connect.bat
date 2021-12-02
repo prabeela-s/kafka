@@ -1,0 +1,1 @@
+%KAFKA_HOME%\bin\windows\connect-standalone %KAFKA_HOME%\etc\kafka\connect-standalone.properties %KAFKA_HOME%\etc\kafka\connect-file-source.properties   %KAFKA_HOME%\etc\kafka\connect-file-sink.properties   
