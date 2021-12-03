@@ -1,4 +1,14 @@
 ```
+ anaconda  -- large
+ 
+ miniconda -- minimal package
+ 
+ miniconda - 3.7 for windows  https://docs.conda.io/en/latest/miniconda.html
+ 
+ Download Miniconda for 3.7 for windows...
+```
+
+```
 pip install kafka-python
 
 
