@@ -13,7 +13,7 @@ findspark.init()
 
 import pyspark
 
-# consume from a topic called invoicess
+# consume from a topic called invoices2
 # calculate aggregate , print data on console
 # publish the aggregated values back to kafka as JSON
 
@@ -110,7 +110,7 @@ windowedAmountSum \
     .writeStream \
     .format("kafka") \
     .outputMode("complete") \
-    .option("kafka.bootstrap.servers", "192.168.93.128:9092") \
+    .option("kafka.bootstrap.servers", "localhost:9092") \
     .option("topic", "aggregated-invoices") \
     .option("checkpointLocation", "file:///c:/spark/temp") \
     .start()
