@@ -8,6 +8,9 @@
  Download Miniconda for 3.7 for windows...
 ```
 
+
+On Windows Start menu, type miniconda, launch command prompt.. 
+
 ```
 pip install kafka-python
 
