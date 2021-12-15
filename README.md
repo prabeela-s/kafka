@@ -125,4 +125,5 @@ sudo apt --fix-broken install
 References:
 
 1. https://github.com/RaphaHell42/pyspark-kafka-streaming
-2. 
+2. https://vanducng.dev/2020/09/23/Deserialize-Avro-Kafka-message-in-pyspark/
+3. 
