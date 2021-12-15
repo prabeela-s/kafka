@@ -126,4 +126,5 @@ References:
 
 1. https://github.com/RaphaHell42/pyspark-kafka-streaming
 2. https://vanducng.dev/2020/09/23/Deserialize-Avro-Kafka-message-in-pyspark/
-3. 
+3. https://blogit.michelin.io/kafka-to-delta-lake-using-apache-spark-streaming-avro/
+4. 
