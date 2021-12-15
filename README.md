@@ -121,3 +121,8 @@ if any error with ubutnu install pacakage fix
 sudo apt --fix-broken install
 ```
 
+
+References:
+
+1. https://github.com/RaphaHell42/pyspark-kafka-streaming
+2. 
