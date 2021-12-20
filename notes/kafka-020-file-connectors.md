@@ -15,6 +15,25 @@ confluent local list connectors
 confluent local status connectors
 ```
 
+
+# work setup
+
+Every user, create a folder with initial, cd into folder, update the filepath accordingly..
+
+example, gopalakrishnan, create gk directory, cd into gk directory, and create all files with gk- prefix..
+
+Similarly kafka topics should have prefix gk-
+
+```
+root@k5:~# mkdir gk
+root@k5:~# cd gk
+root@k5:~/gk# pwd
+/root/gk
+root@k5:~/gk#
+```
+
+
+
 File Connector, File Source connector
     input file, read from teh file stocks.csv, watch the file change,
     publish to kafka topic called stocks
