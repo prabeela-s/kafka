@@ -99,7 +99,7 @@ confluent local status connectors
 check specific connector status 
 
 ```
-confluent local status stock-file-source
+confluent local status <<initial>>-stock-file-source
 
 ```
 
