@@ -63,9 +63,9 @@ SHOW STREAMS;
 
 SHOW TABLES;
 
-CREATE STREAM users_stream (userid varchar, regionid varchar, gender varchar) WITH (kafka_topic='users', value_format='JSON');
+CREATE TABLE users_stream (userid varchar, regionid varchar, gender varchar) WITH (kafka_topic='users', value_format='JSON');
 
-SHOW STREAMS;
+SHOW TABLES;
 
 DESCRIBE users_stream;
 ```
@@ -99,9 +99,9 @@ Will be runnign automatically, need to use TERMINATE command to stop them
 persisted queries will create topics like users_female, users_male kafka topics, and results shall be published to kafka topics..
 
 ```
-CREATE STREAM users_female AS SELECT userid AS userid, regionid FROM users_stream where gender='FEMALE';
+CREATE TABLE users_female AS SELECT userid AS userid, regionid FROM users_stream where gender='FEMALE';
 
-CREATE STREAM users_male AS SELECT userid AS userid, regionid FROM users_stream where gender='MALE';
+CREATE TABLE users_male AS SELECT userid AS userid, regionid FROM users_stream where gender='MALE';
 ```
 
 now check whether new topics created or not
