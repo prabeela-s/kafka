@@ -152,6 +152,25 @@ select * from pageviews_region_table  EMIT CHANGES;
 
 ```
 
+### Order Data from Java
+
+
+```
+CREATE STREAM orders_stream (orderId varchar, amount double, customerId varchar, country varchar) WITH (kafka_topic='orders', value_format='JSON');
+
+DESCRIBE  orders_stream;
+
+SELECT * FROM ORDERS_STREAM EMIT CHANGES;
+```
+
+
+Run OrderProducer.java
+
+
+
+
+
+
 
 List the persisted queries
 
