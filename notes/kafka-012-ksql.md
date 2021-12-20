@@ -167,7 +167,16 @@ SELECT * FROM ORDERS_STREAM EMIT CHANGES;
 Run OrderProducer.java
 
 
+### Invoice Avro data from Java
 
+```
+CREATE STREAM invoice_stream (id varchar, qty int, amount int, customerId varchar, state varchar, country string, invoiceDate bigint  )
+       	 WITH (kafka_topic='invoices', value_format='AVRO');
+```
+
+```
+SELECT * FROM invoice_stream EMIT CHANGES;
+```
 
 
 
