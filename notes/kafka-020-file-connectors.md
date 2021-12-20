@@ -60,12 +60,12 @@ and below content  into nano
 ```
 
 {
- "name": "stock-file-source",
+ "name": "<<initial>>-stock-file-source",
  "config": {
      "connector.class": "FileStreamSource",
      "tasks.max": "1",
-    "file": "/home/bigdata/stocks.csv",
-    "topic": "stocks"
+    "file": "<<filepath>>/stocks.csv",
+    "topic": "<<initial>>-stocks"
      }
  }
 ```
@@ -85,7 +85,9 @@ cat stock-file-source.json
 
 
 ```
-confluent local load stock-file-source -- -d stock-file-source.json
+confluent local load <<initial>>-stock-file-source -- -d stock-file-source.json
+
+confluent local load gk-stock-file-source -- -d stock-file-source.json
 ```
 
 Check whether connector is running or not
@@ -104,7 +106,9 @@ confluent local status stock-file-source
 start consumer on stocks topic on separate linux shell..
 
 ``` 
-kafka-console-consumer --bootstrap-server localhost:9092 --topic stocks --from-beginning
+kafka-console-consumer --bootstrap-server localhost:9092 --topic  <<initial>>-stocks   --from-beginning
+
+kafka-console-consumer --bootstrap-server localhost:9092 --topic  gk-stocks   --from-beginning
 
 ```
 
@@ -157,11 +161,11 @@ paste below content
 
 ```
 {
- "name": "greetings-file-sink",
+ "name": "<<initial>>-greetings-file-sink",
  "config": {
      "connector.class": "FileStreamSink",
      "tasks.max": "1",
-    "file": "/home/bigdata/greetings.txt",
+    "file": "<<filepath>>/greetings.txt",
     "topics": "greetings",
 "key.converter": "org.apache.kafka.connect.storage.StringConverter",
 "value.converter": "org.apache.kafka.connect.storage.StringConverter"
@@ -185,7 +189,7 @@ cat greetings-file-sink.json
 ## Done
 
 ```
-confluent local load greetings-file-sink -- -d greetings-file-sink.json
+confluent local load <<initial>>-greetings-file-sink -- -d greetings-file-sink.json
 confluent local status greetings-file-sink
 ```
 
@@ -227,11 +231,11 @@ paste below content
 
 ```
 {
- "name": "invoices-file-sink",
+ "name": "<<initial>>-invoices-file-sink",
  "config": {
      "connector.class": "FileStreamSink",
      "tasks.max": "1",
-    "file": "/home/bigdata/invoices.txt",
+    "file": "<<filepath>>/invoices.txt",
     "topics": "invoices",
     "key.converter": "org.apache.kafka.connect.storage.StringConverter",
     "value.converter": "io.confluent.connect.avro.AvroConverter",
@@ -281,7 +285,7 @@ cat invoices.txt
 ### ensure connectors unloaded to save memory if run in constrained environment
 
 ```
-confluent local  unload invoices-file-sink
+confluent local  unload <<initial>>-invoices-file-sink
 ```
  
  
