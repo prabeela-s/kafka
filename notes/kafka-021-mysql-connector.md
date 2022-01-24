@@ -73,8 +73,10 @@ cp mysql-connector-java-8.0.25/*.jar confluent-5.5.1/share/java/kafka-connect-jd
 ## Setup the database 
 
 ```
-mysql -uroot
+sudo mysql -u root
 
+
+SELECT User,Host FROM mysql.user;
 
 CREATE USER 'team'@'localhost' IDENTIFIED BY 'team1234';
 
