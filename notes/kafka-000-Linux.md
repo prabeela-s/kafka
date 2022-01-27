@@ -27,7 +27,11 @@ Make note of hostname displayed
 On Windows
 
 
-Open C:\Windows\System32\drivers\etc\hosts file in notepad++
+Open C:\Windows\System32\drivers\etc\hosts file in notepad
+
+```
+notepad C:\Windows\System32\drivers\etc\hosts
+```
 
 
 add below entry to hosts file and save the file
