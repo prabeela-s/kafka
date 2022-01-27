@@ -2,17 +2,17 @@ Windows WSL - Ubuntu
 
 Confluent enterprise is installed
 
-username: bigdata
-password: bigdata
+username: training
+password: training
 
 ```
-wsl.exe -u bigdata
+wsl.exe -u training
 
 
-cd /home/bigdata
+cd /home/training
 ```
 
-/home/bigdata is home directory..
+/home/training is home directory..
 
 
 
