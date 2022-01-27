@@ -23,6 +23,35 @@ SHOW TABLES;
 
 ```
 
+## Orders Stream example
+
+```
+CREATE STREAM orders_stream (
+            orderId varchar, 
+            customerId varchar, 
+            country varchar, 
+            amount double
+            ) WITH (kafka_topic='orders', value_format='JSON');
+
+
+```
+
+```
+SHOW STREAMS
+```
+
+Run non-persisted queries
+
+```
+SELECT * FROM orders_stream emit changes ;
+```
+
+
+Now Run OrderProducer.java code..
+
+
+## Using DataGen Tool
+
 confluent kafka has datagen utility, which can generate data for learning purpose..
 
 clickstream like example
@@ -63,7 +92,7 @@ SHOW STREAMS;
 
 SHOW TABLES;
 
-CREATE TABLE users_stream (userid varchar, regionid varchar, gender varchar) WITH (kafka_topic='users', value_format='JSON');
+CREATE STREAM users_stream (userid varchar, regionid varchar, gender varchar) WITH (kafka_topic='users', value_format='JSON');
 
 SHOW TABLES;
 
