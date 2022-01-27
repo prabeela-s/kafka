@@ -52,6 +52,44 @@ To stop the query later, do Ctrl + C
 Now Run OrderProducer.java code..
 
 
+
+Create kTable from kstream
+Persisted query, means, it runs inside KSQL, the output of the query written to kafka topic 
+it creates topic order_country_table and publish data to that..
+
+```
+CREATE TABLE order_country_table WITH (VALUE_FORMAT='JSON') AS 
+    SELECT 
+        country,   
+        COUNT() AS orders_count, 
+        SUM(amount) as orders_amount
+        FROM orders_stream 
+        WINDOW TUMBLING (size 60 second) 
+        GROUP BY country 
+        HAVING COUNT() >= 1;
+```
+
+```
+ SHOW TABLES;
+````
+
+run non persisted query on ktable changes..
+
+```
+SELECT * FROM ORDER_COUNTRY_TABLE EMIT CHANGES;
+```
+
+
+run a consumer to subscribe to the data changes from analytics output
+
+open command prompt to run below.
+
+
+```
+kafka-console-consumer --bootstrap-server localhost:9092 --topic ORDER_COUNTRY_TABLE --from-beginning
+```
+
+
 ## Using DataGen Tool
 
 confluent kafka has datagen utility, which can generate data for learning purpose..
