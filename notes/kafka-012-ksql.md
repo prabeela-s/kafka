@@ -46,6 +46,8 @@ Run non-persisted queries
 SELECT * FROM orders_stream emit changes ;
 ```
 
+To stop the query later, do Ctrl + C
+
 
 Now Run OrderProducer.java code..
 
