@@ -8,4 +8,4 @@
 6. To get all the subjects, <<TOPICNAME-key>> or <<TOPICNAME-value>> http://localhost:8081/subjects
 7. To get all the versions of specific subjects http://localhost:8081/subjects/invoices-value/versions
 8. To get schema specific to a version, http://localhost:8081/subjects/invoices-value/versions/1    where as 1 may change, refer step 7 for exact schema version
-
+8. To get the schema from schema registry using schema id  http://localhost:8081/schemas/ids/1
