@@ -1,4 +1,4 @@
-package kafka.workshop;
+package kafka.workshop.streams;
 
 import io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde;
 import kafka.workshop.models.Invoice;
