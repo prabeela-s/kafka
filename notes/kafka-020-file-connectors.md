@@ -1,11 +1,11 @@
 ## File Connectors, Source and Sink
 
 ```
-wsl.exe -u bigdata
+wsl.exe -u training
 ```
 
 ```
-cd /home/bigdata
+cd /home/training
 
 sudo apt install jq
 
