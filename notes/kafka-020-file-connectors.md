@@ -64,7 +64,7 @@ and below content  into nano
  "config": {
      "connector.class": "FileStreamSource",
      "tasks.max": "1",
-    "file": "<<filepath>>/stocks.csv",
+    "file": "/home/training/stocks.csv",
     "topic": "stocks"
      }
  }
@@ -165,7 +165,7 @@ paste below content
  "config": {
      "connector.class": "FileStreamSink",
      "tasks.max": "1",
-    "file": "<<filepath>>/greetings.txt",
+    "file": "/home/training/greetings.txt",
     "topics": "greetings",
 "key.converter": "org.apache.kafka.connect.storage.StringConverter",
 "value.converter": "org.apache.kafka.connect.storage.StringConverter"
@@ -235,7 +235,7 @@ paste below content
  "config": {
      "connector.class": "FileStreamSink",
      "tasks.max": "1",
-    "file": "<<filepath>>/invoices.txt",
+    "file": "/home/training/invoices.txt",
     "topics": "invoices",
     "key.converter": "org.apache.kafka.connect.storage.StringConverter",
     "value.converter": "io.confluent.connect.avro.AvroConverter",
