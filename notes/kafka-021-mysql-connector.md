@@ -1,32 +1,13 @@
 # MySQL , JDBC Source and Sink : Event Sourcing
 
 ```
-wsl.exe -u root
+wsl.exe -u training
 
-cd /root
+cd ~
 ```
 
 Some issue with WSL with ubuntu CACHE files location, which is needed by mysql
 
-
-```
-sudo nano /etc/profile.d/wsl-integration.sh
-```
-
-Add below line on begining of the file..
-
-```
-# Check if we have HOME folder
-if [ "${HOME}" = "/" ]; then
-  return
-fi
-```
-
-Ctrl + O - to save the content
-
-if it is prompting to write content, Hit Enter key
-
-Ctrl + X - to quit the nano editor
 
 To start mysql, use 
 ```
