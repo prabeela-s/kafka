@@ -60,12 +60,12 @@ and below content  into nano
 ```
 
 {
- "name": "<<initial>>-stock-file-source",
+ "name": "stock-file-source",
  "config": {
      "connector.class": "FileStreamSource",
      "tasks.max": "1",
     "file": "<<filepath>>/stocks.csv",
-    "topic": "<<initial>>-stocks"
+    "topic": "stocks"
      }
  }
 ```
@@ -85,7 +85,7 @@ cat stock-file-source.json
 
 
 ```
-confluent local load <<initial>>-stock-file-source -- -d stock-file-source.json
+confluent local load stock-file-source -- -d stock-file-source.json
 
 confluent local load gk-stock-file-source -- -d stock-file-source.json
 ```
@@ -99,14 +99,14 @@ confluent local status connectors
 check specific connector status 
 
 ```
-confluent local status <<initial>>-stock-file-source
+confluent local status stock-file-source
 
 ```
 
 start consumer on stocks topic on separate linux shell..
 
 ``` 
-kafka-console-consumer --bootstrap-server localhost:9092 --topic  <<initial>>-stocks   --from-beginning
+kafka-console-consumer --bootstrap-server localhost:9092 --topic  stocks   --from-beginning
 
 kafka-console-consumer --bootstrap-server localhost:9092 --topic  gk-stocks   --from-beginning
 
@@ -161,7 +161,7 @@ paste below content
 
 ```
 {
- "name": "<<initial>>-greetings-file-sink",
+ "name": "greetings-file-sink",
  "config": {
      "connector.class": "FileStreamSink",
      "tasks.max": "1",
@@ -189,7 +189,7 @@ cat greetings-file-sink.json
 ## Done
 
 ```
-confluent local load <<initial>>-greetings-file-sink -- -d greetings-file-sink.json
+confluent local load greetings-file-sink -- -d greetings-file-sink.json
 confluent local status greetings-file-sink
 ```
 
@@ -231,7 +231,7 @@ paste below content
 
 ```
 {
- "name": "<<initial>>-invoices-file-sink",
+ "name": "invoices-file-sink",
  "config": {
      "connector.class": "FileStreamSink",
      "tasks.max": "1",
@@ -285,7 +285,7 @@ cat invoices.txt
 ### ensure connectors unloaded to save memory if run in constrained environment
 
 ```
-confluent local  unload <<initial>>-invoices-file-sink
+confluent local  unload invoices-file-sink
 ```
  
  
