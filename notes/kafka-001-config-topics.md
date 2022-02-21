@@ -35,3 +35,8 @@ kafka-configs --bootstrap-server localhost:9092 --alter --entity-type topics --e
 ```
 kafka-topics --describe  --bootstrap-server localhost:9092  --topic my-topic
 ```
+
+
+```
+kafka-topics --delete  --bootstrap-server localhost:9092  --topic my-topic
+```
