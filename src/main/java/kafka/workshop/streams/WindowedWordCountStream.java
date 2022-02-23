@@ -34,7 +34,7 @@ public class WindowedWordCountStream {
 
 
         final Properties props = new Properties();
-        props.put(StreamsConfig.APPLICATION_ID_CONFIG, "word-count-window-stream");
+        props.put(StreamsConfig.APPLICATION_ID_CONFIG, "word-count-window-stream-feb2022");
         props.put(StreamsConfig.CLIENT_ID_CONFIG, "word-count-window-stream-client");
         props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
 
@@ -67,12 +67,44 @@ public class WindowedWordCountStream {
                 .windowedBy(TimeWindows.of((Duration.ofMinutes(1)) ))
                 .count(Materialized.as("wordCount")).toStream();
 
+
         // Finally publish the output to kafka topic
         // Key is string, Value is long
         // code below convert Windowed<String> to String for key
         windowedWordStream
                 .map ( (windowedKey, count) -> new KeyValue<>(windowedKey.key(), count))
                 .to("word-count-1minute", Produced.with(Serdes.String(), Serdes.Long()));
+
+
+        //The SessionsWindows.with call determines the length inactivity before you consider the session closed.
+        // The grace method determines is how much time elapses after the window closes before out-of-order are rejected.
+        KStream<Windowed<String>, Long> sessionWindowedWordStream = indWordStream
+                .map( (key, value) -> new KeyValue<>(value, value))
+                .groupByKey()
+                .windowedBy(  SessionWindows.with(Duration.ofMinutes(2)).grace(Duration.ofSeconds(30)))
+                .count(Materialized.as("wordCountSession")).toStream();
+
+        // Finally publish the output to kafka topic
+        // Key is string, Value is long
+        // code below convert Windowed<String> to String for key
+        sessionWindowedWordStream
+                .map ( (windowedKey, count) -> new KeyValue<>(windowedKey.key(), count))
+                .to("word-count-2minute-session-window", Produced.with(Serdes.String(), Serdes.Long()));
+
+
+        // Hopping window
+
+
+        KStream<Windowed<String>, Long> hoppingWindowedWordStream = indWordStream
+                .map( (key, value) -> new KeyValue<>(value, value))
+                .groupByKey()
+                .windowedBy(TimeWindows.of(Duration.ofMinutes(2)).advanceBy(Duration.ofMinutes(2)))
+                .count(Materialized.as("hoppingwordCountSession")).toStream();
+
+        sessionWindowedWordStream
+                .map ( (windowedKey, count) -> new KeyValue<>(windowedKey.key(), count))
+                .to("word-count-2minute-hopping-window", Produced.with(Serdes.String(), Serdes.Long()));
+
 
         windowedWordStream.foreach(new ForeachAction<Windowed<String>, Long>() {
             @Override
