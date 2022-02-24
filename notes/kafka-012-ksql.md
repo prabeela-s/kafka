@@ -168,9 +168,9 @@ Will be runnign automatically, need to use TERMINATE command to stop them
 persisted queries will create topics like users_female, users_male kafka topics, and results shall be published to kafka topics..
 
 ```
-CREATE TABLE users_female AS SELECT userid AS userid, regionid FROM users_stream where gender='FEMALE';
+CREATE STREAM users_female AS SELECT userid AS userid, regionid FROM users_stream where gender='FEMALE';
 
-CREATE TABLE users_male AS SELECT userid AS userid, regionid FROM users_stream where gender='MALE';
+CREATE STREAM users_male AS SELECT userid AS userid, regionid FROM users_stream where gender='MALE';
 ```
 
 now check whether new topics created or not
