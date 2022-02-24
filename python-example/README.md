@@ -8,12 +8,17 @@
  Download Miniconda for 3.7 for windows...
 ```
 
+```
+pip install avro==1.9.1
+```
+
 
 On Windows Start menu, type miniconda, launch command prompt.. 
 
 ```
 pip install kafka-python
 
+pip install confluent-kafka
 
 pip install findspark
 ```

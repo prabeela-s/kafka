@@ -2,7 +2,7 @@ from kafka import KafkaProducer
 from kafka.errors import KafkaError
 
 # broker runs in linux machine
-producer = KafkaProducer(bootstrap_servers=['localhost:9092'])
+producer = KafkaProducer(bootstrap_servers=['k1.training.sh:9092'])
 
 TOPIC = "test"
 
