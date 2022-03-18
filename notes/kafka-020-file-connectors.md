@@ -17,22 +17,13 @@ confluent local status connectors
 
 
 # work setup
+Use Home Directory in Linux
 
-Every user, create a folder with initial, cd into folder, update the filepath accordingly..
-
-example, gopalakrishnan, create gk directory, cd into gk directory, and create all files with gk- prefix..
-
-Similarly kafka topics should have prefix gk-
+open terminal 
 
 ```
-root@k5:~# mkdir gk
-root@k5:~# cd gk
-root@k5:~/gk# pwd
-/root/gk
-root@k5:~/gk#
+cd ~
 ```
-
-
 
 File Connector, File Source connector
     input file, read from teh file stocks.csv, watch the file change,
@@ -87,7 +78,6 @@ cat stock-file-source.json
 ```
 confluent local load stock-file-source -- -d stock-file-source.json
 
-confluent local load gk-stock-file-source -- -d stock-file-source.json
 ```
 
 Check whether connector is running or not
@@ -108,7 +98,6 @@ start consumer on stocks topic on separate linux shell..
 ``` 
 kafka-console-consumer --bootstrap-server localhost:9092 --topic  stocks   --from-beginning
 
-kafka-console-consumer --bootstrap-server localhost:9092 --topic  gk-stocks   --from-beginning
 
 ```
 
