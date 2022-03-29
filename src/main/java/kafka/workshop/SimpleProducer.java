@@ -1,10 +1,8 @@
 package kafka.workshop;
 
 // SimpleProducer.java
-// kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 3 --topic greetings
+// kafka-topics --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3 --topic greetings
 // kafka-console-consumer --bootstrap-server localhost:9092 --topic greetings  --from-beginning --property print.key=true --property print.timestamp=true
-
-// kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 3 --topic greetings2
 
 
 import org.apache.kafka.clients.producer.KafkaProducer;
@@ -16,7 +14,7 @@ import static org.apache.kafka.clients.producer.ProducerConfig.*;
 
 public class SimpleProducer {
 
-    public static String TOPIC = "greetings2";
+    public static String TOPIC = "greetings";
 
 
     public static String[] greetingMessages = new String[] {
