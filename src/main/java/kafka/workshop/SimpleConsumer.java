@@ -17,7 +17,7 @@ import java.util.UUID;
 import static org.apache.kafka.clients.consumer.ConsumerConfig.*;
 
 public class SimpleConsumer {
-    public static String TOPIC = "greetings2";
+    public static String TOPIC = "greetings";
 
     public static void main(String[] args) throws Exception {
         Properties props = new Properties();
