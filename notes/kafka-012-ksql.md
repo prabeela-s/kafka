@@ -249,12 +249,30 @@ SELECT * FROM invoice_stream EMIT CHANGES;
 
 
 
+```
+CREATE TABLE invoice_state_table WITH (VALUE_FORMAT='AVRO') AS 
+    SELECT 
+        state,   
+        COUNT(qty) AS quantity, 
+        SUM(amount * qty) as invoice_amount
+        FROM invoice_stream 
+        WINDOW TUMBLING (size 120  second) 
+        GROUP BY state 
+        HAVING COUNT(qty) >= 1;
+```
+
+```
+ SELECT * FROM invoice_state_table EMIT CHANGES;
+```
+
 
 List the persisted queries
 
 ```
 SHOW QUERIES;
 ```
+
+---------------------------------------------------------------------------------------------------
 
 explain the query with query id
 
