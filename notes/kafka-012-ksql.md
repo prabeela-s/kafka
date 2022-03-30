@@ -341,3 +341,11 @@ CREATE STREAM users_stream_avro (userid varchar, regionid varchar, gender varcha
 CREATE TABLE pageviews_region_table_avro WITH (VALUE_FORMAT='AVRO') AS SELECT gender, regionid, COUNT() AS numusers FROM user_pageviews_enriched_stream_avro WINDOW TUMBLING (size 60 second) GROUP BY gender, regionid HAVING COUNT() >= 1;
 
 ```
+
+### Avro Console Consumer
+
+To consume messages from avro format
+
+```
+ kafka-avro-console-consumer --bootstrap-server localhost:9092 --topic stock-orders --from-beginning --property schema.registry.url="http://localhost:8081"
+```
