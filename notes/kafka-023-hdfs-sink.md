@@ -30,4 +30,7 @@ paste below
 ```
  confluent local load hdfs-sink -- -d  hdfs-sink.json
  confluent local status hdfs-sink
+ 
+  confluent local unload hdfs-sink
+
 ```
