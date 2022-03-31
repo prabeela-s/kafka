@@ -1,52 +1,15 @@
 # MySQL , JDBC Source and Sink : Event Sourcing
 
 ```
-wsl.exe -u training
 
 cd ~
 ```
 
-Some issue with WSL with ubuntu CACHE files location, which is needed by mysql
-
-
-To start mysql, use 
-```
-sudo /etc/init.d/mysql start
-```
-
-to stop mysql use, right now DO NOT STOP MYSQL
+# INSTALL MYSQL
 
 ```
-sudo /etc/init.d/mysql stop
+sudo apt install mysql-server
 ```
-
-
-to uninstall Mysql,  DO NOT DO THIS NOW
-```
-sudo apt remove mysql-server
-
-sudo apt autoremove
-```
- 
-# Install MYSQL JDBC
-
-
-```
-cd /root
-
-rm confluent-5.5.1/share/java/kafka-connect-jdbc/mysql-connector-java-5.1.47.jar
-rm confluent-5.5.1/share/java/kafka-connect-jdbc/mysql-connector-java-5.1.47-bin.jar
-```
-
-```
-wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-8.0.25.tar.gz
-
-tar xf mysql-connector-java-8.0.25.tar.gz
-cp mysql-connector-java-8.0.25/*.jar confluent-5.5.1/share/java/kafka-connect-jdbc
-
-```
-================
-
 
 # MYSQL Table/Database Setup
 
@@ -71,10 +34,13 @@ exit
 
 Exit from the shell
 
+Login as team user with password
+
+```
+mysql -uteam -pteam1234
 ```
 
-mysql -uteam -pteam1234
-
+```
 USE ecommerce;
 
 -- detect insert/update changes using timestamp , but HARD delete
