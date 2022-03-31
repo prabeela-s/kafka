@@ -21,8 +21,7 @@ paste below
 "hadoop.conf.dir": "/home/ubuntu/hadoop-2.7.7/etc/hadoop",
 "hadoop.home": "/home/ubuntu/hadoop-2.7.7",
 "flush.size": "3",
-"rotate.interval.ms": "1000",
-"format.class":"io.confluent.connect.hdfs.json.JsonFormat"
+"rotate.interval.ms": "1000"
 }
 }
 ```
