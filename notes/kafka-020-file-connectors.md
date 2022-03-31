@@ -1,15 +1,10 @@
 ## File Connectors, Source and Sink
+ 
+ 
+ ### List avaiable connectors and status of the connectors
 
 ```
-wsl.exe -u training
-```
-
-```
-cd /home/training
-
-sudo apt install jq
-
-
+ 
 confluent local list connectors
 
 confluent local status connectors
@@ -55,7 +50,7 @@ and below content  into nano
  "config": {
      "connector.class": "FileStreamSource",
      "tasks.max": "1",
-    "file": "/home/training/stocks.csv",
+    "file": "/root/stocks.csv",
     "topic": "stocks"
      }
  }
@@ -154,7 +149,7 @@ paste below content
  "config": {
      "connector.class": "FileStreamSink",
      "tasks.max": "1",
-    "file": "/home/training/greetings.txt",
+    "file": "/root/greetings.txt",
     "topics": "greetings",
 "key.converter": "org.apache.kafka.connect.storage.StringConverter",
 "value.converter": "org.apache.kafka.connect.storage.StringConverter"
@@ -224,7 +219,7 @@ paste below content
  "config": {
      "connector.class": "FileStreamSink",
      "tasks.max": "1",
-    "file": "/home/training/invoices.txt",
+    "file": "/root/invoices.txt",
     "topics": "invoices",
     "key.converter": "org.apache.kafka.connect.storage.StringConverter",
     "value.converter": "io.confluent.connect.avro.AvroConverter",
