@@ -273,3 +273,85 @@ confluent local  unload invoices-file-sink
 ```
  
  
+
+# Stock Order to file sink
+
+
+
+## One last example Avro and file sink
+
+```
+touch stock-orders.txt
+
+
+touch stock-orders-file-sink.json
+
+nano stock-orders-file-sink.json
+
+```
+
+paste below content
+
+
+
+ 
+
+```
+{
+ "name": "stock-orders-file-sink",
+ "config": {
+     "connector.class": "FileStreamSink",
+     "tasks.max": "1",
+    "file": "/home/ubuntu/stock-orders.txt",
+    "topics": "stock-orders",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "io.confluent.connect.avro.AvroConverter",
+    "value.converter.schema.registry.url": "http://localhost:8081"
+     }
+ }
+```
+
+
+```
+confluent local load stock-orders-file-sink -- -d stock-orders-file-sink.json
+
+confluent local status stock-orders-file-sink
+
+```
+
+
+Ctrl + O - to save the content
+
+if it is prompting to write content,  Hit Enter key
+
+Ctrl + X - to quit the nano editor
+
+
+Use cat command to check content
+
+```
+cat stock-orders-file-sink.json
+```
+ 
+
+## DONE
+ 
+
+```
+Now run the avro-order-producer.python that pblish to stock-orders topics
+```
+ 
+ Do this command periodically
+ 
+``` 
+cat stock-orders.txt
+```
+
+
+
+### ensure connectors unloaded to save memory if run in constrained environment
+
+```
+confluent local  unload stock-orders-file-sink
+```
+ 
