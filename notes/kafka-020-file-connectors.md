@@ -50,7 +50,7 @@ and below content  into nano
  "config": {
      "connector.class": "FileStreamSource",
      "tasks.max": "1",
-    "file": "/root/stocks.csv",
+    "file": "/home/ubuntu/stocks.csv",
     "topic": "stocks"
      }
  }
@@ -149,7 +149,7 @@ paste below content
  "config": {
      "connector.class": "FileStreamSink",
      "tasks.max": "1",
-    "file": "/root/greetings.txt",
+    "file": "/home/ubuntu/greetings.txt",
     "topics": "greetings",
 "key.converter": "org.apache.kafka.connect.storage.StringConverter",
 "value.converter": "org.apache.kafka.connect.storage.StringConverter"
@@ -219,7 +219,7 @@ paste below content
  "config": {
      "connector.class": "FileStreamSink",
      "tasks.max": "1",
-    "file": "/root/invoices.txt",
+    "file": "/home/ubuntu/invoices.txt",
     "topics": "invoices",
     "key.converter": "org.apache.kafka.connect.storage.StringConverter",
     "value.converter": "io.confluent.connect.avro.AvroConverter",
