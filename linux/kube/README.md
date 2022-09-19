@@ -21,8 +21,8 @@ touch ~/.bashrc
 ```
 
 ```
-echo "KAFKA_HOME=/home/lab-user/Desktop/confluent-5.5.5" >> ~/.bashrc
-echo "CONFLUENT_HOME=/home/lab-user/Desktop/confluent-5.5.5" >> ~/.bashrc
+echo "export KAFKA_HOME=/home/lab-user/Desktop/confluent-5.5.5" >> ~/.bashrc
+echo "export CONFLUENT_HOME=/home/lab-user/Desktop/confluent-5.5.5" >> ~/.bashrc
 echo "export PATH=\$PATH:\$KAFKA_HOME/bin" >>  ~/.bashrc
 ```
 
