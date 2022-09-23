@@ -66,7 +66,7 @@ exit
 ```
 touch mysql-product-source.json
  
-nano  mysql-product-source.json
+nano  mysql-product-source.json (ctrl-o and ctrl-x)
 ```
    paste below
 ```
