@@ -13,6 +13,7 @@ sudo apt install mysql-server
 
 # MYSQL Table/Database Setup
 
+mysql -uroot -pWelcome.123
 
 ## Setup the database 
 
